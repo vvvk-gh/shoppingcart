@@ -12,6 +12,6 @@ app.use("/" , express.static(path.join(__dirname , 'public')))
 //1: it searches for x.js if not found 
 //2: it will search for x.json if not found 
 //3: it will search for x/index.js 
-app.use("/api" , require('./routes/api').route)
+app.use('/api', require('./routes/api').route)
 
 app.listen('3462', ()=> console.log(`Sever is listening at http://localhost:3462`))

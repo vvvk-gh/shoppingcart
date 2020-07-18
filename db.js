@@ -20,15 +20,15 @@ db.authenticate()
 
 //Creating a model in ORM  = Table in Db
 //db.define(x , {obj}) --> x will be name of the table and obj will defines the columns , datatype of the columns in the table
-const User = db.define('users' , {
-    id : {
-        type:Sequelize.INTEGER,
-        autoIncrement : true,
-        primaryKey : true,
+const User = db.define('users', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
     },
-    name :{
-        type : Sequelize.STRING,
-        allowNull : false,
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
     }
 })
 
@@ -53,11 +53,11 @@ const Product = db.define('products' , {
 })
 
 //Syncs the DB
-db.sync({alter:true})
+db.sync()
     .then(()=> console.log(`Database Synced`))
     .catch((e)=> console.log(`Error : ${e}`))
 
 
 exports = module.exports = {
-    db , User , Product
+     User , Product
 }

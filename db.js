@@ -1,9 +1,7 @@
-const Sequlize =  require('sequelize');
-
-const {DataTypes} = Sequlize.DataTypes;
+const Sequelize =  require('sequelize');
 
 //Define and Accessing the DB
-const db = new Sequlize('shopdb' , 'shopper' , 'shoppass' ,{
+const db = new Sequelize('shopdb' , 'shopper' , 'shoppass' ,{
     host: 'localhost',
     dialect : 'mysql',
     pool : {
@@ -24,12 +22,12 @@ db.authenticate()
 //db.define(x , {obj}) --> x will be name of the table and obj will defines the columns , datatype of the columns in the table
 const User = db.define('users' , {
     id : {
-        type:DataTypes.INTEGER,
+        type:Sequelize.INTEGER,
         autoIncrement : true,
         primaryKey : true,
     },
     name :{
-        type : DataTypes.STRING,
+        type : Sequelize.STRING,
         allowNull : false,
     }
 })
@@ -38,17 +36,17 @@ const User = db.define('users' , {
 
 const Product = db.define('products' , {
     id : {
-        type : Sequlize.INTEGER,
+        type : Sequelize.INTEGER,
         autoIncrement : true,
         primaryKey : true,
     },
     name : {
-        type : Sequlize.STRING,
+        type : Sequelize.STRING,
         allowNull: false,   
     },
-    manufacturer : Sequlize.STRING,
+    manufacturer : Sequelize.STRING,
     price : {
-        type : Sequlize.FLOAT,
+        type : Sequelize.FLOAT,
         allowNull: false,
         defaultValue : 0.0,
     }
@@ -56,7 +54,7 @@ const Product = db.define('products' , {
 
 //Syncs the DB
 db.sync({alter:true})
-    .then(()=> console.log(`Database Synchronized`))
+    .then(()=> console.log(`Database Synced`))
     .catch((e)=> console.log(`Error : ${e}`))
 
 

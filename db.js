@@ -52,12 +52,33 @@ const Product = db.define('products' , {
     }
 })
 
+
+//cart
+const Cart = db.define('cartproducts' , {
+    id:{
+        type:Sequelize.INTEGER,
+        autoIncrement: false,
+        primaryKey : true,      
+    },
+    name :{
+        type:Sequelize.STRING,
+        allowNull : false,
+    },
+    price : {
+        type:Sequelize.FLOAT,
+        allowNull: false,
+        defaultValue : 0.0
+    }    
+
+})
+
+
 //Syncs the DB
-db.sync()
+db.sync({alter:true})
     .then(()=> console.log(`Database Synced`))
     .catch((e)=> console.log(`Error : ${e}`))
 
 
 exports = module.exports = {
-     User , Product
+     User , Product , Cart
 }

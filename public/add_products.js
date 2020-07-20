@@ -11,7 +11,7 @@ $(function () {
             productPrice.val(),
             
             function (addedProduct) {
-             window.alert("Added " + addedProduct.name + " to Database");
+             window.alert("Added to Database");
             }
         )
 
